@@ -1,0 +1,8 @@
+User: Sergey, Phone: 890344555566, Date and time: 27.04 at 20:00.
+User: Fedor, Phone: 89032233, Date and time: 27.04 at 21:00, Master: walter.
+User: admin, Phone: 890344555566, Date and time: 27.04 at 20:00, Master: walter.
+User: admin, Phone: 890344555566, Date and time: 27.04 at 20:00, Master: walter.
+User: admin, Phone: 890344555566, Date and time: 27.04 at 20:00, Master: walter.
+User: Sergey, Phone: 8903444555, Date and time: 27.04 at 21:00, Master: Walter White.
+User: Fedor, Phone: 890344555566, Date and time: 27.04 at 21:00, Master: Jessie Pinkman, color: #a4bdfc
+User: Sergey, Phone: 8903444555, Date and time: 27.04 at 20:00, Master: Jessie Pinkman, color: #7bd148

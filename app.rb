@@ -1,6 +1,22 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
+require 'sqlite3'
+
+configure do
+	@db = SQLite3::Database.new 'BarberShop.db'
+	@db.execute 'CREATE TABLE IF NOT EXISTS
+		"Users"
+		(
+			"id" INTEGER PRIMARY KEY AUTOINCREMENT,
+			"name" TEXT,
+			"phone" TEXT,
+			"datestamp" TEXT,
+			"barber" TEXT,
+			"color" TEXT
+		)'
+		
+end	
 
 get '/' do
 	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
@@ -56,9 +72,12 @@ post '/visit' do
 		return erb :visit
 	end	
 
-	file = File.open './public/users.txt', 'a'
-  file.write "User: #{@user_name}, Phone: #{@phone}, Date and time: #{@datetime}, Master: #{@master}, color: #{@color}\n"
-  file.close
+	# file = File.open './public/users.txt', 'a'
+  # file.write "User: #{@user_name}, Phone: #{@phone}, Date and time: #{@datetime}, Master: #{@master}, color: #{@color}\n"
+  # file.close
+
+	#db.execute "INSERT INTO Users(Name, Phone, DataStamp, Barber, Color) 
+	#						VALUES(#{@user_name}, #{@phone}, #{@datetime}, #{@master}, #{@color})"
 
 	erb "User: #{@user_name}, Phone: #{@phone}, Date and time: #{@datetime}, Master: #{@master}, color: #{@color}"
 end

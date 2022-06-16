@@ -23,6 +23,13 @@ def get_db
 	return db
 end	
 
+before do
+	db = get_db
+
+	@barbers = db.execute 'select * from Barbers order by id desc'
+	db.close
+end	
+
 configure do
 	db = get_db
 	db.execute 'CREATE TABLE IF NOT EXISTS
@@ -88,7 +95,7 @@ post '/visit' do
 	hh = { :user_name => 'Введите имя',
 				 :phone => 'Введите телефон',
 				 :datetime => 'Введите дату и время' }
-	
+
 	# для каждой пары ключ-значение 
 	#hh.each do |key, value|
 		# если параметр пуст

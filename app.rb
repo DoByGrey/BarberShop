@@ -4,7 +4,9 @@ require 'sinatra/reloader'
 require 'sqlite3'
 
 def get_db
-	return SQLite3::Database.new 'BarberShop.db'
+	db = SQLite3::Database.new 'BarberShop.db'
+	db.results_as_hash = true
+	return db
 end	
 
 configure do
@@ -19,6 +21,22 @@ configure do
 			"barber" TEXT,
 			"color" TEXT
 		)'
+
+	db.execute 'CREATE TABLE IF NOT EXISTS
+		"Contacts"
+		(
+			"id" INTEGER PRIMARY KEY AUTOINCREMENT,
+			"email" TEXT, 
+			"massage" TEXT
+		)'	
+
+	db.execute 'CREATE TABLE IF NOT EXISTS
+	"Barbers"
+	(
+		"id" INTEGER PRIMARY KEY AUTOINCREMENT,
+		"name" TEXT
+	)'	
+	
 	db.close	
 end	
 
@@ -104,4 +122,17 @@ post '/contacts' do
   file.close
   
 	erb "Сообщение отправлено!"
+end	
+
+get '/showusers' do
+	
+	erb :showusers
+end	
+
+post '/showusers' do
+	#db = get_db
+	
+	#db.execute 'select * from Users ORDER BY id DESC' do |row|
+	#	erb "#{row['Name']} записался на #{row['datestamp']}"
+	#end	
 end	

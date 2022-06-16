@@ -133,7 +133,7 @@ post '/visit' do
 		) 
 		VALUES (?, ?, ?, ?, ?)', [@user_name, @phone, @datetime, @master, @color]
 
-	erb "User: #{@user_name}, Phone: #{@phone}, Date and time: #{@datetime}, Master: #{@master}, color: #{@color}"
+	erb "<h2>Спасибо, вы  записались!</h2>"
 end
 
 post '/contacts' do

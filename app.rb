@@ -125,14 +125,14 @@ post '/contacts' do
 end	
 
 get '/showusers' do
+	db = get_db
 	
+	@results = db.execute 'select * from Users order by id desc'
+	db.close
+
 	erb :showusers
 end	
 
 post '/showusers' do
-	#db = get_db
-	
-	#db.execute 'select * from Users ORDER BY id DESC' do |row|
-	#	erb "#{row['Name']} записался на #{row['datestamp']}"
-	#end	
+		
 end	
